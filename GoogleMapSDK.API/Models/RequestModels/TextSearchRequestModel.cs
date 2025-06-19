@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class TextSearchRequestModel
+    public class TextSearchRequestModel : BaseRequestModel
     {
-
+        public string Query { get; set; }
     }
 }

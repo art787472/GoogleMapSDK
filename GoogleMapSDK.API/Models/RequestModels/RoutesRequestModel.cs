@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class RoutesRequestModel
+    public class RoutesRequestModel 
     {
 
         
@@ -24,33 +24,24 @@ namespace GoogleMapSDK.API.Models.RequestModels
 
         public class Origin
         {
-            public Location location { get; set; } = new Location(new Latlng(37.419734, -122.0827784));
+            public Location location { get; set; } = new Location(new LatLng(37.419734, -122.0827784));
         }
 
         public class Location
         {
-            public Location(Latlng latLng)
+            public Location(LatLng latLng)
             {
                 this.latLng = latLng;
             }
 
-            public Latlng latLng { get; set; }
+            public LatLng latLng { get; set; }
         }
 
-        public class Latlng
-        {
-            public Latlng(double lat, double lng) 
-            { 
-                this.latitude = lat; 
-                this.longitude = lng; 
-            }
-            public double latitude { get; set; }
-            public double longitude { get; set; }
-        }
+
 
         public class Destination
         {
-            public Location location { get; set; } = new Location(new Latlng(37.417670, -122.079595));
+            public Location location { get; set; } = new Location(new LatLng(37.417670, -122.079595));
         }
 
         

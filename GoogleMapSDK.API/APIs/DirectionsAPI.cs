@@ -22,14 +22,7 @@ namespace GoogleMapSDK.API.APIs
         public Task<DirectionsResponseModel> GetDirectionsAsync(DirectionsRequestModel model)
         {
             var baseUrl = $"https://maps.googleapis.com/maps/api/directions/json";
-
-            var param = model.param;
-            param["key"] = _request.Token;
-
-
-
-
-            return _request.GetAsync<DirectionsResponseModel>(baseUrl, model.param);
+            return _request.GetAsync<DirectionsResponseModel>(baseUrl + model.ToUri());
         }
     }
 }

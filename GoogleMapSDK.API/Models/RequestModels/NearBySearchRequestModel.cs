@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class NearBySearchRequestModel
+    public class NearBySearchRequestModel : BaseRequestModel
     {
         public string Keyword { get; set; }
         public string Location { get; set; }

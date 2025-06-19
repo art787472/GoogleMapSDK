@@ -6,29 +6,11 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class PlaceDetailRequestModel : ARequestModel
+    public class PlaceDetailRequestModel : BaseRequestModel
     {
-        public string PlaceId
-        {
-            get
-            {
-                return param["place_id"];
-            }
-            set
-            {
-                param["place_id"] = value;
-            }
-        }
-        public string Fields
-        {
-            get
-            {
-                return param["fields"];
-            }
-            set
-            {
-                param["fields"] = value;
-            }
-        }
+        public string Place_Id {  get; set; }
+        
+        public string Fields {  get; set; }
+        
     }
 }

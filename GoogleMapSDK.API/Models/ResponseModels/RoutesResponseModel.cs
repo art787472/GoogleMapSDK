@@ -105,14 +105,10 @@ namespace GoogleMapSDK.API.Models.ResponseModels
 
         public class Startlocation
         {
-            public Latlng latLng { get; set; }
+            public LatLng latLng { get; set; }
         }
 
-        public class Latlng
-        {
-            public float latitude { get; set; }
-            public float longitude { get; set; }
-        }
+
 
         public class Endlocation
         {

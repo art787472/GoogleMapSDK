@@ -6,41 +6,13 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class FindPlaceRequestModel
+    public class FindPlaceRequestModel : BaseRequestModel
     {
-        public string Input
-        {
-            get
-            {
-                return param["input"];
-            }
-            set
-            {
-                param["input"] = value;
-            }
-        }
-        public string InputType
-        {
-            get
-            {
-                return param["inputtype"];
-            }
-            set
-            {
-                param["inputtype"] = value;
-            }
-        }
-        public string Fields
-        {
-            get
-            {
-                return param["fields"];
-            }
-            set
-            {
-                param["fields"] = value;
-            }
-        }
-        public Dictionary<string, string> param { get; set; } = new Dictionary<string, string>();
+        public string Input { get; set; }
+        
+        public string InputType { get; set; }
+        
+        public string Fields { get; set; }
+        
     }
 }

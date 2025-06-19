@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace GoogleMapSDK.API.Models.ResponseModels
 {
@@ -28,7 +29,9 @@ namespace GoogleMapSDK.API.Models.ResponseModels
             public Bounds bounds { get; set; }
             public string copyrights { get; set; }
             public Leg[] legs { get; set; }
-            public Overview_Polyline overview_polyline { get; set; }
+
+            [JsonProperty("overview_polyline")]
+            public List<LatLng> overview_polyline { get; set; }
             public string summary { get; set; }
             public object[] warnings { get; set; }
             public int[] waypoint_order { get; set; }

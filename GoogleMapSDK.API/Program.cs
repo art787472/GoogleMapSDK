@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GoogleMapSDK.API.APIs;
 using GoogleMapSDK.API.Context;
+using GoogleMapSDK.API.Converter;
 using GoogleMapSDK.API.Models.RequestModels;
 using GoogleMapSDK.API.Models.ResponseModels;
+using GoogleMapSDK.API.Utility;
+using Newtonsoft.Json;
 
 namespace GoogleMapSDK.API
 {
@@ -15,19 +19,26 @@ namespace GoogleMapSDK.API
     {
         static async Task Main(string[] args)
         {
-            GoogleMapContext context = new GoogleMapContext("AIzaSyAOGStQaoYkBHNeqfXBNaX4_uHc34n8Z_k");
+            GoogleMapContext.AssignAllServices(new GoogleMapContext(ConfigurationManager.AppSettings["apiKey"]));
 
-            //var requestModel = new DirectionsRequestModel()
-            //{
-            //    param = new Dictionary<string, string>()
-            //    {
-            //        { "origin", "台北101" },
-            //        { "destination", "台北車站" },
-            //        { "mode", "driving" }
-            //    }
-            //};
+            var context = new GoogleMapContext(ConfigurationManager.AppSettings["apiKey"]);
+            //var model = new GeoCodeRequestModel { Address = "台北101" };
+            //var p = model.Param;
 
-            //var response = await context.directionAPI.GetDirectionsAsync(requestModel);
+
+            //var geocode = await context.geoCodeAPI.GetGeoCodeAsync(new GeoCodeRequestModel { Address = "台北101" });
+
+
+            var requestModel = new DirectionsRequestModel()
+            {
+                Origin = "台北101",
+                Destination = "台北車站",
+                Mode = Enums.TrafficMode.Driving 
+                
+            };
+
+            
+            var response = await context.directionAPI.GetDirectionsAsync(requestModel);
 
             //var findPlaceModel = new FindPlaceRequestModel()
             //{
@@ -55,14 +66,17 @@ namespace GoogleMapSDK.API
             //var photoModel = new PlacePhotoRequestModel()
             //{
             //    MaxWidth = 400,
-            //    Photo_Id = "ChIJcUElzOzMQQwRLuV30nMUEUM"
+            //    PlaceId = "ChIJcUElzOzMQQwRLuV30nMUEUM"
             //};
 
             //var photoResponse = await context.placesAPI.PlacePhoto(photoModel);
 
-            var routesModel = new RoutesRequestModel();
-            
-            var routesResponse = await context.routesAPI.RoutesAsync(routesModel);
+
+            var point = PolylineDecoder.Decode("{hxwCc{}dVW?EAU?G?I?mAAiAAq@?i@A_@?uD?_@Aa@Lm@?QAW?{@?kAAc@?oAAwBEa@?Q?I?]BI?");
+
+            //var routesModel = new RoutesRequestModel();
+
+            //var routesResponse = await context.routesAPI.RoutesAsync(routesModel);
         }
     }
 }

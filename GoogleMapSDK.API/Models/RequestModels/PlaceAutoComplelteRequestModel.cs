@@ -7,7 +7,7 @@ using System.Web.UI.HtmlControls;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class PlaceAutoComplelteRequestModel
+    public class PlaceAutoComplelteRequestModel : BaseRequestModel
     {
         public string Input { get; set; }
         public string Location { get; set; }

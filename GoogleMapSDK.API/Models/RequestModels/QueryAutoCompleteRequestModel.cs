@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class ARequestModel
+    public class QueryAutoCompleteRequestModel : BaseRequestModel
     {
-        public Dictionary<string, string> param = new Dictionary<string, string>();
+        public string Input {  get; set; }
     }
 }

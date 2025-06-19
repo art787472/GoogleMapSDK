@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace GoogleMapSDK.API.Models.RequestModels
 {
-    public class PlacePhotoRequestModel
+    public class PlacePhotoRequestModel : BaseRequestModel
     {
-        public string Photo_Id { get; set; }
+        public string PlaceId { get; set; }
         public int MaxWidth { get; set; }
+        
     }
 }

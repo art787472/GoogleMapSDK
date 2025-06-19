@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C450F8D7-49E7-4148-816A-275CAA3437F5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>GoogleMapSDK.API</RootNamespace>
     <AssemblyName>GoogleMapSDK.API</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,12 +32,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HttpRequest, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\HttpRequest\HttpRequest\bin\Debug\HttpRequest.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -54,14 +61,21 @@
     <Compile Include="APIs\PlacesAPI.cs" />
     <Compile Include="APIs\RoutesAPI.cs" />
     <Compile Include="Context\GoogleMapContext.cs" />
+    <Compile Include="Converter\PolylineJsonConverter.cs" />
     <Compile Include="Enums\TrafficMode.cs" />
-    <Compile Include="Models\RequestModels\ARequestModel.cs" />
+    <Compile Include="JsonCreationConverter.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Share\LatLng.cs" />
+    <Compile Include="Models\RequestModels\BaseRequestModel.cs" />
     <Compile Include="Models\RequestModels\DirectionsRequestModel.cs" />
     <Compile Include="Models\RequestModels\FindPlaceRequestModel.cs" />
+    <Compile Include="Models\RequestModels\GeoCodeRequestModel.cs" />
     <Compile Include="Models\RequestModels\NearBySearchRequestModel.cs" />
+    <Compile Include="Models\RequestModels\PhotoRequest.cs" />
     <Compile Include="Models\RequestModels\PlaceAutoComplelteRequestModel.cs" />
     <Compile Include="Models\RequestModels\PlaceDetailRequestModel.cs" />
     <Compile Include="Models\RequestModels\PlacePhotoRequestModel.cs" />
+    <Compile Include="Models\RequestModels\QueryAutoCompleteRequestModel.cs" />
     <Compile Include="Models\RequestModels\RoutesRequestModel.cs" />
     <Compile Include="Models\RequestModels\TextSearchRequestModel.cs" />
     <Compile Include="Models\ResponseModels\DirectionsResponseModel.cs" />
@@ -77,9 +91,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Extension.cs" />
+    <Compile Include="Utility\PolylineDecoder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

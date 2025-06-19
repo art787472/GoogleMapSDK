@@ -15,6 +15,7 @@ namespace GoogleMapSDK.API.Utility
             var properties = ob.GetType().GetProperties();
             foreach (var property in properties)
             {
+                
                 var value = property.GetValue(ob);
                 if (value != null)
                 {

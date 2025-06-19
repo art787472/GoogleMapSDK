@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GoogleMapSDK.API.Models.RequestModels;
 using GoogleMapSDK.API.Models.ResponseModels;
 using Request = HttpRequest.HttpRequest;
 
@@ -17,10 +18,10 @@ namespace GoogleMapSDK.API.APIs
             _request = request;
         }
 
-        public async Task<GeoCodeResponseModel> GetGeoCodeAsync(string address)
+        public async Task<GeoCodeResponseModel> GetGeoCodeAsync(GeoCodeRequestModel model)
         {
-            var url = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={_request.Token}";
-            var response = await _request.GetAsync<GeoCodeResponseModel>(url);
+            var baseUrl = $"https://maps.googleapis.com/maps/api/geocode/json";
+            var response = await _request.GetAsync<GeoCodeResponseModel>(baseUrl + model.ToUri());
             return response;
         }
     }

@@ -16,7 +16,7 @@ namespace GoogleMapSDK.API.APIs
     public class PlacesAPI
     {
         private readonly Request _request;
-
+        private readonly string _baseURL = "https://maps.googleapis.com/maps/api/place";
         public PlacesAPI(Request request)
         {
             _request = request;
@@ -24,79 +24,57 @@ namespace GoogleMapSDK.API.APIs
 
         public async Task<FindPlaceResponseModel> FindPlaceAsync(FindPlaceRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/findplacefromtext/json";
-
-            var param = model.param;
-            param["key"] = _request.Token;
-
-
-
-
-            return await _request.GetAsync<FindPlaceResponseModel>(baseUrl, model.param);
+            var baseUrl = $"{_baseURL}/findplacefromtext/json";
+            return await _request.GetAsync<FindPlaceResponseModel>(baseUrl + model.ToUri());
         }
 
         public async Task<NearBySearchResponseModel> NearBySearchAsync(NearBySearchRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-
-            var param = model.ToDictionary();
-            param["key"] = _request.Token;
-
-
-
-
-            return await _request.GetAsync<NearBySearchResponseModel>(baseUrl, param);
+            var baseUrl = $"{_baseURL}/nearbysearch/json";
+            return await _request.GetAsync<NearBySearchResponseModel>(baseUrl + model.ToUri());
         }
 
-        public async Task<TextSearchResponseModel> TextSearchAsync(string query)
+        public async Task<TextSearchResponseModel> TextSearchAsync(TextSearchRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/textsearch/json?query={query}&key={_request.Token}";
-
-            return await _request.GetAsync<TextSearchResponseModel>(baseUrl);
+            var baseUrl = $"{_baseURL}/textsearch/json";
+            return await _request.GetAsync<TextSearchResponseModel>(baseUrl + model.ToUri());
         }
 
         public async Task<PlaceDetailResponseModel> PlaceDetailAsync(PlaceDetailRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/details/json";
-            var param = model.param;
-            param["key"] = _request.Token;
-            return await _request.GetAsync<PlaceDetailResponseModel>(baseUrl, model.param);
+            var baseUrl = $"{_baseURL}/details/json";
+            return await _request.GetAsync<PlaceDetailResponseModel>(baseUrl + model.ToUri());
 
 
         }
 
         public async Task<PlaceAutoComplelteResponseModel> PlaceAutocomplete(PlaceAutoComplelteRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/autocomplete/json";
-
-            var param = model.ToDictionary();
-            param["key"] = _request.Token;
-
-
-
-
-            return await _request.GetAsync<PlaceAutoComplelteResponseModel>(baseUrl, param);
+            var baseUrl = $"{_baseURL}/autocomplete/json";
+            return await _request.GetAsync<PlaceAutoComplelteResponseModel>(baseUrl + model.ToUri());
         }
 
         public async Task<Bitmap> PlacePhoto(PlacePhotoRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/details/json?placeid={model.Photo_Id}&key={_request.Token}";
-
-            var param = model.ToDictionary();
-            param["key"] = _request.Token;
-            var photoDetail = await _request.GetAsync<PlacePhotoResponseModel>(baseUrl);
+            var baseUrl = $"{_baseURL}/details/json";
+            var photoDetail = await _request.GetAsync<PlacePhotoResponseModel>(baseUrl + model.ToUri());
             var photoReference = photoDetail.result.photos[0].photo_reference;
-            var photoUrl = $"https://maps.googleapis.com/maps/api/place/photo?maxwidth={model.MaxWidth}&photo_reference={photoReference}&key={_request.Token}";
+            var photoModel = new PhotoRequest { MaxWidth = model.MaxWidth, Photo_reference = photoReference };
+           
+            return await PhotoReference(photoModel);
+        }
+
+        public async Task<Bitmap> PhotoReference(PhotoRequest photoModel)
+        {
+            var photoUrl = $"{_baseURL}/photo" + photoModel.ToUri();
             var photo = await _request.GetImgAsync(photoUrl);
             return photo;
         }
 
-        public async Task<QueryAutoCompleteResponseModel> QueryAutoComplete(string query)
+        public async Task<QueryAutoCompleteResponseModel> QueryAutoComplete(QueryAutoCompleteRequestModel model)
         {
-            var baseUrl = $"https://maps.googleapis.com/maps/api/place/queryautocomplete/json";
-            var param = new Dictionary<string, string> { { "query", query } };
-            param["key"] = _request.Token;
-            return await _request.GetAsync<QueryAutoCompleteResponseModel>(baseUrl, param);
+            var baseUrl = $"{_baseURL}/queryautocomplete/json";
+            return await _request.GetAsync<QueryAutoCompleteResponseModel>(baseUrl + model.ToUri());
         }
     }
 }

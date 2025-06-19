@@ -22,7 +22,6 @@ namespace GoogleMapSDK.API.APIs
         public async Task<RoutesResponseModel> RoutesAsync(RoutesRequestModel model)
         {
             var baseUrl = $"https://routes.googleapis.com/directions/v2:computeRoutes";
-            
             return await _request.PostAsync<RoutesResponseModel>(baseUrl, model);
         }
     }
