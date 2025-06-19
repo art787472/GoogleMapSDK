@@ -15,11 +15,10 @@ namespace GoogleMapSDK.Core
 {
     public partial class Form1 : Form
     {
-        public Form1(IAutoCompleteTextBoxView autoCompleteTextBox)
+        public Form1()
         {
             InitializeComponent();
 
-            this.Controls.Add((Control)autoCompleteTextBox);
         }
 
         private void Form1_Load(object sender, EventArgs e)

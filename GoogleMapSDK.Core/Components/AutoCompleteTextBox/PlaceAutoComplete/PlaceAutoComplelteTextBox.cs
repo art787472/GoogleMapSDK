@@ -11,8 +11,8 @@ using GoogleMapSDK.API.Models.ResponseModels;
 using GoogleMapSDK.Core.Component.GoogleMapComponent.Model;
 using GoogleMapSDK.Core.Components.AutoCompleteTextBox.Base;
 using GoogleMapSDK.Core.Components.BaseAutoCompleteTextBox;
+using GoogleMapSDK.Core.Components.PlaceAutoComplete.Presenter;
 using GoogleMapSDK.Core.Contract;
-using GoogleMapSDK.Core.View;
 using IOCDependencyInjection;
 using static GoogleMapSDK.API.Models.ResponseModels.QueryAutoCompleteResponseModel;
 
@@ -26,7 +26,7 @@ namespace GoogleMapSDK.Core.Components.PlaceAutoComplete
         public PlaceAutoComplelteTextBox(IMVPFactory factory) : base()
         {
             this.SelectFinished += OnSelectFinished;
-            this.detailPresenter = factory.Create<AutoCompleteTextBoxBase, BasePresenter>(this);
+            this.detailPresenter = factory.Create<AutoCompleteTextBoxBase, BasePresenter>(this, typeof(PlaceAutoCompletePresenter));
             this.DisplayMember = "description";
         }
 

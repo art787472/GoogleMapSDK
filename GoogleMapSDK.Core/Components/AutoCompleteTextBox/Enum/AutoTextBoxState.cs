@@ -10,6 +10,6 @@ namespace GoogleMapSDK.Core.Component.Enum
     {
         Editing,
         Preview,
-        Complelte
+        Complete
     }
 }

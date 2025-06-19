@@ -34,7 +34,7 @@ namespace GoogleMapSDK.Core
 
 
             this.placeAutoCompleteTextBox = autoTextBoxes.FirstOrDefault(x => x.GetType() == typeof(PlaceAutoComplelteTextBox));
-            //this.placeAutoCompleteTextBox.PlaceSelected += PlaceSelected;
+            this.placeAutoCompleteTextBox.PlaceSelected += PlaceSelected;
             this.Controls.Add((Control)this.placeAutoCompleteTextBox);
 
             this.historyAutoCompleteTextBox = autoTextBoxes.FirstOrDefault(x => x.GetType() == typeof(HistoryAutoCompleteTextBox));

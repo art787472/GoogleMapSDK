@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GoogleMapSDK.Core.Component.GoogleMapComponent.Model;
 using GoogleMapSDK.Core.Components.AutoCompleteTextBox.Base;
 using GoogleMapSDK.Core.Components.BaseAutoCompleteTextBox;
-
+using GoogleMapSDK.Core.Components.HistoryAutoComplete.Presenter;
 using GoogleMapSDK.Core.Contract;
 using IOCDependencyInjection;
 
@@ -19,7 +19,7 @@ namespace GoogleMapSDK.Core.Components.HistoryAutoComplete
 
         public HistoryAutoCompleteTextBox(IMVPFactory factory) : base()
         {
-            this._historyPresenter = factory.Create<AutoCompleteTextBoxBase, BasePresenter>(this);
+            this._historyPresenter = factory.Create<AutoCompleteTextBoxBase, BasePresenter>(this, typeof(HistoryAutoCompletePresenter));
             this.DisplayMember = "Name";
         }
         private Action<object, Place> _placeSelected;

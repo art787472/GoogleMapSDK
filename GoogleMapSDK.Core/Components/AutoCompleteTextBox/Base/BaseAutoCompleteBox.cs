@@ -174,7 +174,7 @@ namespace GoogleMapSDK.Core.Components.BaseAutoCompleteTextBox
             this._listBox.Visible = false;
             
             this.SelectFinished?.Invoke(this, GetSelectItem((T1)_listBox.SelectedItem));
-            state = AutoTextBoxState.Complelte;
+            state = AutoTextBoxState.Complete;
         }
 
         private void MyAutoCompleteTextBox_ParentChanged(object sender, EventArgs e)
@@ -197,7 +197,7 @@ namespace GoogleMapSDK.Core.Components.BaseAutoCompleteTextBox
                 case Keys.Tab:
                     if (!_listBox.Visible) return;
                     e.SuppressKeyPress = true;
-                    state = AutoTextBoxState.Complelte;
+                    state = AutoTextBoxState.Complete;
                     this.Text = (string)GetDisplayName((T1)_listBox.SelectedItem);
                     SelectionStart = Text.Length;
                     _listBox.Visible = false;
