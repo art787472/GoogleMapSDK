@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 using GoogleMapSDK.API.APIs;
 using GoogleMapSDK.API.Context;
 using GoogleMapSDK.API.Converter;
-using GoogleMapSDK.API.Models.RequestModels;
-using GoogleMapSDK.API.Models.ResponseModels;
+
 using GoogleMapSDK.API.Utility;
+using GoogleMapSDK.Contract.API.Enums;
+using GoogleMapSDK.Contract.API.Models.RequestModels;
 using Newtonsoft.Json;
 
 namespace GoogleMapSDK.API
@@ -33,7 +34,7 @@ namespace GoogleMapSDK.API
             {
                 Origin = "台北101",
                 Destination = "台北車站",
-                Mode = Enums.TrafficMode.Driving 
+                Mode = TrafficMode.Driving 
                 
             };
 

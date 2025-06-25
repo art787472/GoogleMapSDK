@@ -4,11 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using static GoogleMapSDK.Contract.ComponentContract.AutoCompleteContract;
 using IOCDependencyInjection;
 
-namespace GoogleMapSDK.Core
+namespace GoogleMapSDK.UI.Winform.Test
 {
     internal static class Program
     {
@@ -20,10 +18,15 @@ namespace GoogleMapSDK.Core
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            var collection = new ServiceCollection();
+            collection.RegisterMVP(Assembly.GetEntryAssembly());
+            collection.AddSingleton<Form, Form1>();
+            collection.AddWinFormUIKitRegistraction();
+
+            var provider = collection.BuildProvider();
+            var form = provider.GetService<Form>();
+            Application.Run(form);
             
-            
-            
-            //Application.Run(form);
         }
     }
 }

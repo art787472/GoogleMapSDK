@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93D518F9-68A9-4589-84FC-5FF35D63D8B1}</ProjectGuid>
+    <ProjectGuid>{ED793D1F-2DD7-4291-B875-9181A9310667}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GoogleMapSDK.Core</RootNamespace>
-    <AssemblyName>GoogleMapSDK.Core</AssemblyName>
+    <RootNamespace>GoogleMapSDK.UI.Winform</RootNamespace>
+    <AssemblyName>GoogleMapSDK.UI.Winform</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,6 +51,12 @@
     <Reference Include="IOCDependencyInjection">
       <HintPath>..\..\IOCDependencyInjection\IOCDependencyInjection\bin\Debug\IOCDependencyInjection.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.6\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.6\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -69,8 +75,14 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.115.5\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,8 +95,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AutoCompleteTextBox\Base\BaseAutoCompleteBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\AutoCompleteTextBox\Enum\AutoTextBoxState.cs" />
+    <Compile Include="Components\AutoCompleteTextBox\HistoryAutoComplete\HistoryAutoCompleteTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\AutoCompleteTextBox\HistoryAutoComplete\Presenter\HistoryAutoCompletePresenter.cs" />
+    <Compile Include="Components\AutoCompleteTextBox\PlaceAutoComplete\PlaceAutoComplelteTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\AutoCompleteTextBox\PlaceAutoComplete\Presenter\PlaceAutoCompletePresenter.cs" />
+    <Compile Include="Components\GoogleMapComponent\Control\GoogleMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\GoogleMapComponent\Overlays\AOverlay.cs" />
+    <Compile Include="Components\GoogleMapComponent\Overlays\MarkerOverlay.cs" />
+    <Compile Include="Components\GoogleMapComponent\Overlays\OverlayFactory.cs" />
+    <Compile Include="Components\GoogleMapComponent\Overlays\OverlayType.cs" />
+    <Compile Include="Components\GoogleMapComponent\Overlays\RouteOverlay.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinFormUIKitRegistraction.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -117,10 +156,13 @@
       <Project>{89aaec00-9d8d-4da1-9b44-284bd2f7d8be}</Project>
       <Name>GoogleMapSDK.Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleMapSDK.Core\GoogleMapSDK.Core.csproj">
+      <Project>{93D518F9-68A9-4589-84FC-5FF35D63D8B1}</Project>
+      <Name>GoogleMapSDK.Core</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Folder Include="Components\GoogleMapComponent\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

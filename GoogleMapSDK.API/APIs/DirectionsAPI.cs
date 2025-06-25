@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Request = HttpRequest.HttpRequest;
 using System.Web;
-using GoogleMapSDK.API.Models.RequestModels;
-using GoogleMapSDK.API.Models.ResponseModels;
+
+using GoogleMapSDK.Contract.API;
+using GoogleMapSDK.Contract.API.Models.ResponseModels;
+using GoogleMapSDK.Contract.API.Models.RequestModels;
 
 namespace GoogleMapSDK.API.APIs
 {
-    public class DirectionsAPI
+    public class DirectionsAPI : IDirectionAPI
     {
         private readonly Request _request;
 

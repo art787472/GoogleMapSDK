@@ -97,6 +97,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleMapSDK.Contract\GoogleMapSDK.Contract.csproj">
+      <Project>{89aaec00-9d8d-4da1-9b44-284bd2f7d8be}</Project>
+      <Name>GoogleMapSDK.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

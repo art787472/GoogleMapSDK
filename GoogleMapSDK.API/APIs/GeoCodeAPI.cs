@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GoogleMapSDK.API.Models.RequestModels;
-using GoogleMapSDK.API.Models.ResponseModels;
+using GoogleMapSDK.Contract.API;
+using GoogleMapSDK.Contract.API.Models.RequestModels;
+using GoogleMapSDK.Contract.API.Models.ResponseModels;
 using Request = HttpRequest.HttpRequest;
 
 namespace GoogleMapSDK.API.APIs
 {
-    public class GeoCodeAPI
+    public class GeoCodeAPI : IGeoCodeAPI
     {
         private readonly Request _request;
 

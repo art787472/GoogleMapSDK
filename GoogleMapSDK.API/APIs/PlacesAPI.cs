@@ -6,14 +6,15 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using GoogleMapSDK.API.Models.RequestModels;
-using GoogleMapSDK.API.Models.ResponseModels;
-using GoogleMapSDK.API.Utility;
+
+using GoogleMapSDK.Contract.API;
+using GoogleMapSDK.Contract.API.Models.RequestModels;
+using GoogleMapSDK.Contract.API.Models.ResponseModels;
 using Request = HttpRequest.HttpRequest;
 
 namespace GoogleMapSDK.API.APIs
 {
-    public class PlacesAPI
+    public class PlacesAPI : IPlaceAPI
     {
         private readonly Request _request;
         private readonly string _baseURL = "https://maps.googleapis.com/maps/api/place";

@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using GoogleMapSDK.API.APIs;
 using GoogleMapSDK.API.Converter;
+using GoogleMapSDK.Contract.API;
 using Newtonsoft.Json;
 using Request = HttpRequest.HttpRequest;
 
 namespace GoogleMapSDK.API.Context
 {
-    public class GoogleMapContext
+    public class GoogleMapContext : IGoogleMapContext
     {
         JsonSerializerSettings settings = new JsonSerializerSettings
         {
@@ -61,11 +62,11 @@ namespace GoogleMapSDK.API.Context
             InitilizeAPIs(request);
         }
 
-        public GeoCodeAPI geoCodeAPI { get; set; }
+        public IGeoCodeAPI geoCodeAPI { get; set; }
 
-        public DirectionsAPI directionAPI { get; set; }
-        public PlacesAPI placesAPI { get; set; }
-        public RoutesAPI routesAPI { get; set; }
+        public IDirectionAPI directionAPI { get; set; }
+        public IPlaceAPI placesAPI { get; set; }
+        public IRoutesAPI routesAPI { get; set; }
 
         private void InitilizeAPIs(Request request)
         {

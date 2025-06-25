@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapSDK.API", "GoogleM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapSDK.Core", "GoogleMapSDK.Core\GoogleMapSDK.Core.csproj", "{93D518F9-68A9-4589-84FC-5FF35D63D8B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapSDK.UI.Winform", "GoogleMapSDK.UI.Winform\GoogleMapSDK.UI.Winform.csproj", "{ED793D1F-2DD7-4291-B875-9181A9310667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapSDK.Contract", "GoogleMapSDK.Contract\GoogleMapSDK.Contract.csproj", "{89AAEC00-9D8D-4DA1-9B44-284BD2F7D8BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapSDK.UI.Winform.Test", "GoogleMapSDK.UI.Winform.Test\GoogleMapSDK.UI.Winform.Test.csproj", "{DE66005F-0BAD-4492-9A69-D8CBD189900D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{93D518F9-68A9-4589-84FC-5FF35D63D8B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D518F9-68A9-4589-84FC-5FF35D63D8B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D518F9-68A9-4589-84FC-5FF35D63D8B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED793D1F-2DD7-4291-B875-9181A9310667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED793D1F-2DD7-4291-B875-9181A9310667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED793D1F-2DD7-4291-B875-9181A9310667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED793D1F-2DD7-4291-B875-9181A9310667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89AAEC00-9D8D-4DA1-9B44-284BD2F7D8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89AAEC00-9D8D-4DA1-9B44-284BD2F7D8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89AAEC00-9D8D-4DA1-9B44-284BD2F7D8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89AAEC00-9D8D-4DA1-9B44-284BD2F7D8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE66005F-0BAD-4492-9A69-D8CBD189900D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE66005F-0BAD-4492-9A69-D8CBD189900D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE66005F-0BAD-4492-9A69-D8CBD189900D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE66005F-0BAD-4492-9A69-D8CBD189900D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
