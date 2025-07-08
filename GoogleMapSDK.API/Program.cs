@@ -20,9 +20,9 @@ namespace GoogleMapSDK.API
     {
         static async Task Main(string[] args)
         {
-            GoogleMapContext.AssignAllServices(new GoogleMapContext(ConfigurationManager.AppSettings["apiKey"]));
+            //GoogleMapContext.AssignAllServices(new GoogleMapContext(ConfigurationManager.AppSettings["apiKey"]));
 
-            var context = new GoogleMapContext(ConfigurationManager.AppSettings["apiKey"]);
+            //var context = new GoogleMapContext(ConfigurationManager.AppSettings["apiKey"]);
             //var model = new GeoCodeRequestModel { Address = "台北101" };
             //var p = model.Param;
 
@@ -39,7 +39,7 @@ namespace GoogleMapSDK.API
             };
 
             
-            var response = await context.directionAPI.GetDirectionsAsync(requestModel);
+            //var response = await context.directionAPI.GetDirectionsAsync(requestModel);
 
             //var findPlaceModel = new FindPlaceRequestModel()
             //{
@@ -75,7 +75,7 @@ namespace GoogleMapSDK.API
 
             var point = PolylineDecoder.Decode("{hxwCc{}dVW?EAU?G?I?mAAiAAq@?i@A_@?uD?_@Aa@Lm@?QAW?{@?kAAc@?oAAwBEa@?Q?I?]BI?");
 
-            //var routesModel = new RoutesRequestModel();
+            var routesModel = new RoutesRequestModel();
 
             //var routesResponse = await context.routesAPI.RoutesAsync(routesModel);
         }

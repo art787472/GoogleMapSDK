@@ -18,6 +18,7 @@ namespace GoogleMapSDK.API.APIs
         public RoutesAPI(Request request)
         {
             _request = request;
+            //_request.AddHeader("X-Goog-FieldMask", "*");
         }
 
         public async Task<RoutesResponseModel> RoutesAsync(RoutesRequestModel model)

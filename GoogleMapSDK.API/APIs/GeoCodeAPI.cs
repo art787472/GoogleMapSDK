@@ -22,7 +22,7 @@ namespace GoogleMapSDK.API.APIs
         public async Task<GeoCodeResponseModel> GetGeoCodeAsync(GeoCodeRequestModel model)
         {
             var baseUrl = $"https://maps.googleapis.com/maps/api/geocode/json";
-            var response = await _request.GetAsync<GeoCodeResponseModel>(baseUrl + model.ToUri());
+            var response = await _request.GetAsync<GeoCodeResponseModel>(baseUrl + model.ToUri(_request.Token));
             return response;
         }
     }

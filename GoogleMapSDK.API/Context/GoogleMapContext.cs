@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using GoogleMapSDK.API.APIs;
 using GoogleMapSDK.API.Converter;
 using GoogleMapSDK.Contract.API;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Request = HttpRequest.HttpRequest;
 
@@ -19,7 +20,7 @@ namespace GoogleMapSDK.API.Context
         {
             Converters = new List<JsonConverter> { new PolylineJsonConverter() }
         };
-        public Request request { get; set; } = new Request();
+        public Request request { get; set; } 
         public string Token { get; set; }
 
         private static GoogleMapContext _contextInstance;
@@ -40,15 +41,37 @@ namespace GoogleMapSDK.API.Context
         }
 
 
-        public GoogleMapContext(string token)
+        //public GoogleMapContext(string token, IDirectionAPI directionAPI, IGeoCodeAPI geoCodeAPI, IPlaceAPI placeAPI, IRoutesAPI routesAPI)
+        //{
+
+        //    Token = token;
+        //    request.Token = Token;
+        //    _contextInstance = this;
+
+        //    request.AddSetting(settings);
+        //    AddHeaders(request);
+
+        //    this.geoCodeAPI = geoCodeAPI;
+        //    this.directionAPI = directionAPI;
+        //    this.placesAPI = placeAPI;
+        //    this.routesAPI = routesAPI;
+        //}
+
+        public GoogleMapContext(Request request,IDirectionAPI directionAPI, IGeoCodeAPI geoCodeAPI, IPlaceAPI placeAPI, IRoutesAPI routesAPI, IConfiguration configuration)
         {
-            Token = token;
-            request.Token = Token;
+
+            //Token = configuration["apiKey"];
+            //request.Token = Token;
             _contextInstance = this;
 
             request.AddSetting(settings);
-            AddHeaders(request);
-            InitilizeAPIs(request);
+            //AddHeaders(request);
+
+            this.request = request;
+            this.geoCodeAPI = geoCodeAPI;
+            this.directionAPI = directionAPI;
+            this.placesAPI = placeAPI;
+            this.routesAPI = routesAPI;
         }
 
         public GoogleMapContext()
@@ -59,7 +82,7 @@ namespace GoogleMapSDK.API.Context
 
             request.AddSetting(settings);
             AddHeaders(request);
-            InitilizeAPIs(request);
+            
         }
 
         public IGeoCodeAPI geoCodeAPI { get; set; }
@@ -68,13 +91,7 @@ namespace GoogleMapSDK.API.Context
         public IPlaceAPI placesAPI { get; set; }
         public IRoutesAPI routesAPI { get; set; }
 
-        private void InitilizeAPIs(Request request)
-        {
-            geoCodeAPI = new GeoCodeAPI(request);
-            directionAPI = new DirectionsAPI(request);
-            placesAPI = new PlacesAPI(request);
-            routesAPI = new RoutesAPI(request);
-        }
+
 
         private void AddHeaders(Request request)
         {

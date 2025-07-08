@@ -8,7 +8,7 @@ using GoogleMapSDK.Contract.Models;
 using static GoogleMapSDK.Contract.ComponentContract.AutoCompleteContract;
 using IOCDependencyInjection;
 using GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox;
-using GoogleMapSDK.UI.Winform.Components.HistoryAutoComplete.Presenter;
+using GoogleMapSDK.Core.Presenters;
 
 namespace GoogleMapSDK.UI.Winform.Components.HistoryAutoComplete
 {

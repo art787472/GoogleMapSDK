@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using GoogleMapSDK.Contract.Models;
 
-namespace GoogleMapSDK.API.Utility
+
+namespace GoogleMapSDK.Contract.API.Utility
 {
     public static class PolylineDecoder
     {

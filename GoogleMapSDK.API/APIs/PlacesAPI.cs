@@ -26,25 +26,25 @@ namespace GoogleMapSDK.API.APIs
         public async Task<FindPlaceResponseModel> FindPlaceAsync(FindPlaceRequestModel model)
         {
             var baseUrl = $"{_baseURL}/findplacefromtext/json";
-            return await _request.GetAsync<FindPlaceResponseModel>(baseUrl + model.ToUri());
+            return await _request.GetAsync<FindPlaceResponseModel>(baseUrl + model.ToUri(_request.Token));
         }
 
         public async Task<NearBySearchResponseModel> NearBySearchAsync(NearBySearchRequestModel model)
         {
             var baseUrl = $"{_baseURL}/nearbysearch/json";
-            return await _request.GetAsync<NearBySearchResponseModel>(baseUrl + model.ToUri());
+            return await _request.GetAsync<NearBySearchResponseModel>(baseUrl + model.ToUri(_request.Token));
         }
 
         public async Task<TextSearchResponseModel> TextSearchAsync(TextSearchRequestModel model)
         {
             var baseUrl = $"{_baseURL}/textsearch/json";
-            return await _request.GetAsync<TextSearchResponseModel>(baseUrl + model.ToUri());
+            return await _request.GetAsync<TextSearchResponseModel>(baseUrl + model.ToUri(_request.Token));
         }
 
         public async Task<PlaceDetailResponseModel> PlaceDetailAsync(PlaceDetailRequestModel model)
         {
             var baseUrl = $"{_baseURL}/details/json";
-            return await _request.GetAsync<PlaceDetailResponseModel>(baseUrl + model.ToUri());
+            return await _request.GetAsync<PlaceDetailResponseModel>(baseUrl + model.ToUri(_request.Token));
 
 
         }
@@ -52,13 +52,13 @@ namespace GoogleMapSDK.API.APIs
         public async Task<PlaceAutoComplelteResponseModel> PlaceAutocomplete(PlaceAutoComplelteRequestModel model)
         {
             var baseUrl = $"{_baseURL}/autocomplete/json";
-            return await _request.GetAsync<PlaceAutoComplelteResponseModel>(baseUrl + model.ToUri());
+            return await _request.GetAsync<PlaceAutoComplelteResponseModel>(baseUrl + model.ToUri(_request.Token));
         }
 
         public async Task<Bitmap> PlacePhoto(PlacePhotoRequestModel model)
         {
             var baseUrl = $"{_baseURL}/details/json";
-            var photoDetail = await _request.GetAsync<PlacePhotoResponseModel>(baseUrl + model.ToUri());
+            var photoDetail = await _request.GetAsync<PlacePhotoResponseModel>(baseUrl + model.ToUri(_request.Token));
             var photoReference = photoDetail.result.photos[0].photo_reference;
             var photoModel = new PhotoRequest { MaxWidth = model.MaxWidth, Photo_reference = photoReference };
            
@@ -67,7 +67,7 @@ namespace GoogleMapSDK.API.APIs
 
         public async Task<Bitmap> PhotoReference(PhotoRequest photoModel)
         {
-            var photoUrl = $"{_baseURL}/photo" + photoModel.ToUri();
+            var photoUrl = $"{_baseURL}/photo" + photoModel.ToUri(_request.Token);
             var photo = await _request.GetImgAsync(photoUrl);
             return photo;
         }
@@ -75,7 +75,7 @@ namespace GoogleMapSDK.API.APIs
         public async Task<QueryAutoCompleteResponseModel> QueryAutoComplete(QueryAutoCompleteRequestModel model)
         {
             var baseUrl = $"{_baseURL}/queryautocomplete/json";
-            return await _request.GetAsync<QueryAutoCompleteResponseModel>(baseUrl + model.ToUri());
+            return await _request.GetAsync<QueryAutoCompleteResponseModel>(baseUrl + model.ToUri(_request.Token));
         }
     }
 }

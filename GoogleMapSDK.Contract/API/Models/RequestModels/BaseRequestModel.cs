@@ -5,26 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using GoogleMapSDK.API.Utility;
+using GoogleMapSDK.Contract.API.Utility;
 
 namespace GoogleMapSDK.Contract.API.Models.RequestModels
 {
     public class BaseRequestModel
+
     {
-        public Dictionary<string, string> GetParam()
+        string Token { get; set; }
+
+        public Dictionary<string, string> GetParam(string apiKey)
         {
            
              
                 var param = this.ToDictionary();
-                param.Add("key", ConfigurationManager.AppSettings["apiKey"]);
-            param.Add("language", "zh-TW");
+                param.Add("key", apiKey);
+                param.Add("language", "zh-TW");
                 return param;
             
         }
 
-        public string ToUri ()
+        public string ToUri (string apiKey)
         {
-            var param = this.GetParam();
+            var param = this.GetParam(apiKey);
             string uri = "?";
             foreach (var kv in param)
             {

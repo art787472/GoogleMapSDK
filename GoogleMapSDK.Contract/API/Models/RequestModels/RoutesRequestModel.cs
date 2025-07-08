@@ -25,7 +25,7 @@ namespace GoogleMapSDK.Contract.API.Models.RequestModels
 
         public class Origin
         {
-            public Location location { get; set; } = new Location(new LatLng(37.419734, -122.0827784));
+            public Location location { get; set; } = new Location(new LatLng(25.0475613, 121.5173399));
         }
 
         public class Location
@@ -42,7 +42,7 @@ namespace GoogleMapSDK.Contract.API.Models.RequestModels
 
         public class Destination
         {
-            public Location location { get; set; } = new Location(new LatLng(37.417670, -122.079595));
+            public Location location { get; set; } = new Location(new LatLng(25.0339, 121.5650));
         }
 
         

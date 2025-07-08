@@ -6,15 +6,13 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GoogleMapSDK.API.Models.RequestModels;
-using GoogleMapSDK.API.Models.ResponseModels;
 using GoogleMapSDK.Contract;
 using GoogleMapSDK.Contract.Models;
 using static GoogleMapSDK.Contract.ComponentContract.AutoCompleteContract;
 using IOCDependencyInjection;
-using static GoogleMapSDK.API.Models.ResponseModels.QueryAutoCompleteResponseModel;
 using GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox;
-using GoogleMapSDK.UI.Winform.Components.PlaceAutoComplete.Presenter;
+using GoogleMapSDK.Core.Presenters;
+using static GoogleMapSDK.Contract.API.Models.ResponseModels.QueryAutoCompleteResponseModel;
 
 
 

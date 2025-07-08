@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GMap.NET.WindowsForms;
+using static GoogleMapSDK.Contract.ComponentContract.GoogleMapContract;
 
 namespace GoogleMapSDK.Core.Component.GoogleMapComponent.Overlays
 {
-    public abstract class AOverlay
+    public abstract class AOverlay : IOverlay
     {
         private static Dictionary<string, GMapOverlay> overlays = new Dictionary<string, GMapOverlay>();
         public GMapControl gMap;

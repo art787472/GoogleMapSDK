@@ -9,6 +9,7 @@ using GoogleMapSDK.Core.Component.Enum;
 using System.Drawing;
 using static GoogleMapSDK.Contract.ComponentContract.AutoCompleteContract;
 using GoogleMapSDK.Contract.Models;
+using GoogleMapSDK.UI.Winform.Utility;
 
 namespace GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox
 {
@@ -136,12 +137,18 @@ namespace GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox
         public void Initialize()
         {
             _listBox = new ListBox();
-            KeyUp += this_KeyUp;
+            KeyUp += Keyup;
             TextChanged += AutoCompleteTextBox_TextChanged;
             ParentChanged += MyAutoCompleteTextBox_ParentChanged;
             _listBox.Click += _listBox_Click;
             _listBox.SelectedIndexChanged += _listBox_SelectedIndexChanged;
             _listBox.SelectedValueChanged += _listBox_SelectedValueChanged;
+        }
+
+        private void Keyup(object sender, KeyEventArgs e)
+        {
+            var key = KeyConverter.KeyCodeToConsoleKey(e.KeyCode);
+            this_KeyUp(sender, key);
         }
 
         private void AutoCompleteTextBox_TextChanged(object sender, EventArgs e)
@@ -181,18 +188,18 @@ namespace GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox
             Parent.Controls.Add(_listBox);
         }
 
-        public void this_KeyUp(object sender, KeyEventArgs e)
+        public void this_KeyUp(object sender, ConsoleKey e)
        {
-
+            
             // keyup不斷監聽使用者輸入，在debouncetime 結束後，將輸入的字串內容發送給使用者(使用者必須監聽keyup事件)
             // 使用者根據收到的字串結果，進行api發送，將api response 結果傳入 DataSource
             // DataSource 收到之後進行畫面渲染
             UpdateListBox();
-            switch (e.KeyCode)
+            switch (e)
             {
-                case Keys.Tab:
+                case ConsoleKey.Tab:
                     if (!_listBox.Visible) return;
-                    e.SuppressKeyPress = true;
+                    //e.SuppressKeyPress = true;
                     state = AutoTextBoxState.Complete;
                     this.Text = (string)GetDisplayName((T1)_listBox.SelectedItem);
                     SelectionStart = Text.Length;
@@ -201,7 +208,7 @@ namespace GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox
                     this.SelectFinished?.Invoke(this, item);
                     break;
 
-                case Keys.Down:
+                case ConsoleKey.DownArrow:
                     {
                         if (!_listBox.Visible) return;
                         _listBox.SelectedIndex =
@@ -213,7 +220,7 @@ namespace GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox
                         SelectionStart = Text.Length;
                         break;
                     }
-                case Keys.Up:
+                case ConsoleKey.UpArrow:
                     {
                         if (!_listBox.Visible) return;
                         _listBox.SelectedIndex =
@@ -225,7 +232,7 @@ namespace GoogleMapSDK.UI.Winform.Components.BaseAutoCompleteTextBox
                         break;
                     }
 
-                case Keys.Back:
+                case ConsoleKey.Backspace:
                     {
                         state = AutoTextBoxState.Editing;
                         break;

@@ -18,7 +18,7 @@ namespace GoogleMapSDK.Contract.ComponentContract
             void Initialize();
             void UpdateListBox();
 
-            void this_KeyUp(object sender, KeyEventArgs e);
+            void this_KeyUp(object sender, ConsoleKey e);
 
             void AutoCompleteFinish<T>(List<T> queries);
             void GetPlactDetailFinish<T>(T place);

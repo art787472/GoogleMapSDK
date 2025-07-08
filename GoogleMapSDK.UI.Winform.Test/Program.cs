@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GoogleMapSDK.API;
+using GoogleMapSDK.Contract.API;
 using IOCDependencyInjection;
+using Microsoft.Extensions.Configuration;
+using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
+using GoogleMapSDK.Core;
 
 namespace GoogleMapSDK.UI.Winform.Test
 {
@@ -18,13 +25,21 @@ namespace GoogleMapSDK.UI.Winform.Test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var collection = new ServiceCollection();
-            collection.RegisterMVP(Assembly.GetEntryAssembly());
-            collection.AddSingleton<Form, Form1>();
-            collection.AddWinFormUIKitRegistraction();
 
+            IConfiguration configuration = new ConfigurationBuilder()
+                        .AddJsonFile("appsettings.json")
+                        .Build();
+
+            var collection = new ServiceCollection();
+            collection.AddGoogleMapSDKRegistration(configuration);
+            collection.AddWinFormUIKitRegistraction(configuration);
+            collection.AddAPIRegistration(configuration);
+            collection.AddSingleton<Form, Form1>();
+            
             var provider = collection.BuildProvider();
+           
             var form = provider.GetService<Form>();
+
             Application.Run(form);
             
         }

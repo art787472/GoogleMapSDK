@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GoogleMapSDK.UI.Winform.Properties;
 
 namespace GoogleMapSDK.UI.Winform
 {
@@ -15,6 +16,9 @@ namespace GoogleMapSDK.UI.Winform
         public Form1()
         {
             InitializeComponent();
+            var temp = Resources.ResourceManager.GetObject("red", Resources.Culture) as Bitmap;
+
+
         }
     }
 }

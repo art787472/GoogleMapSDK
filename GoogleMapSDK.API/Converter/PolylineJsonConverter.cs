@@ -8,7 +8,6 @@ using GoogleMapSDK.API.Models;
 using GoogleMapSDK.API.Utility;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static GoogleMapSDK.API.Models.ResponseModels.DirectionsResponseModel;
 
 namespace GoogleMapSDK.API.Converter
 {

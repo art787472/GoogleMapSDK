@@ -11,8 +11,8 @@ namespace GoogleMapSDK.Contract.API.Models.ResponseModels
     {
 
        
-            public Route[] routes { get; set; }
-            public Geocodingresults geocodingResults { get; set; }
+        public Route[] routes { get; set; }
+        public Geocodingresults geocodingResults { get; set; }
         
 
         public class Geocodingresults
